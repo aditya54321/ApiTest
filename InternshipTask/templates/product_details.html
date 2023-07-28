@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ product.title }}</h1>
+<p>Price: ${{ product.price }}</p>
+<p>Description: {{ product.description }}</p>
+<p>Rating: {{ product.rating }}</p>
+<p>Stock: {{ product.stock }}</p>
+<p>Brand: {{ product.brand }}</p>
+<p>Category: {{ product.category }}</p>
+<img src="{{ product.thumbnail }}" alt="Thumbnail" />
+
+<h2>Images:</h2>
+<ul>
+  {% for image in product.images %}
+  <li>
+    <img src="{{ image }}" alt="Product Image" />
+  </li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'update_product' product.id %}" class="update-link"
+  >Update</a
+>
+<a href="{% url 'delete_product' product.id %}" class="delete-link"
+  >Delete</a
+>
+{% endblock %}
